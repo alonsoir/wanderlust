@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "wanderlust"
+version = "0.1.0"
+description = ""
+authors = ["Alonso Isidoro Román <alonsoir@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+solara = "^1.22"
+openai = "^1.8.0"
+ipyleaflet = "^0.17.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

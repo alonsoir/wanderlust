@@ -8,15 +8,13 @@ USER user
 ENV HOME=/home/user \
 	PATH=/home/user/.local/bin:$PATH
 
-# Upgreade pip
-RUN pip install --no-cache-dir --upgrade pip
+# Install poetry
+RUN curl -sSL https://install.python-poetry.org/ | python -
 
-COPY --chown=user requirements.txt .
-
-# Install requirements
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+# Install dependencies using poetry
+COPY pyproject.toml poetry.lock ./
+RUN poetry install --no-dev
 
 COPY --chown=user *.py *.css /
 
-ENTRYPOINT ["solara", "run", "wanderlust.py", "--host=0.0.0.0", "--port", "7860"]
-
+ENTRYPOINT ["poetry", "run", "solara", "run", "wanderlust.py", "--host=0.0.0.0", "--port", "7860"]
