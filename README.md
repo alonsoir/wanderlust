@@ -26,7 +26,7 @@ How to run locally:
 
     docker build -t wanderlust .
 
-    docker run -it wanderlust
+    docker run -it --publish 7860:7860 wanderlust
     Solara server is starting at http://0.0.0.0:7860
 
 Attention!
@@ -37,7 +37,7 @@ Create a .env file with something like:
 
 then there are two ways:
 
-1) log in into your container and export your OPENAI_API_KEY
+1)   log in into your container and export your OPENAI_API_KEY
 
     ┌<▪> ~/g/wanderlust
     └➤
@@ -55,11 +55,11 @@ go to http://0.0.0.0:7860
 If API_KEY is correct, you will see the interface. This method is ephemeral, if the container is drop, you will have to recreate
 the process.
 
-2) Create a .env file with a content like this in the host machine 
+2) Create a .env file with a content like this in the host machine:
 
-    OPENAI_API_KEY=YOUR_API_KEY
+    OPENAI_API_KEY=YOUR_VALID_API_KEY
 
-and then run the next command:
+and then run the next command in the host machine:
 
     ┌<▸> ~/g/wanderlust
     └➤
